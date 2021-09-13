@@ -17,5 +17,8 @@
   "bugs": {
     "url": "https://github.com/ctolnai/note-taker/issues"
   },
-  "homepage": "https://github.com/ctolnai/note-taker#readme"
+  "homepage": "https://github.com/ctolnai/note-taker#readme",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
 }
