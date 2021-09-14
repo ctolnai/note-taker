@@ -2,10 +2,12 @@ const router = require('express').Router();
 const { ifError } = require('assert');
 const fs = require('fs');
 const db = require('../db/db.json');
-const {readAndAppend } = require('../helpers/fsUtils');
+const {readAndAppend, readFromFile } = require('../helpers/fsUtils');
+
 
 router.get('/notes', (req, res) => {
-    res.json(db)
+    readFromFile('./db/db.json').then ((data)=>res.json(JSON.parse(data)));
+
 }
 );
 
