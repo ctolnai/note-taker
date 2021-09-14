@@ -2,23 +2,36 @@ const router = require('express').Router();
 const { ifError } = require('assert');
 const fs = require('fs');
 const db = require('../db/db.json');
+const { readFromFile, readAndAppend } = require('../helpers/fsUtils');
 
 router.get('/notes', (req, res) => {
-    // fs.readFile(db, 'utf-8', (err, data)=> {
-    //     if (err) throw err
-    // }) 
     res.json(db)
 }
 );
 
 router.post('/notes', (req, res) => {
-    // fs.readFile(db, 'utf-8', (err, data)=> {
-    //     if (err) throw err
-    // }) 
+    console.info(`${req.method} request received to submit feedback`);
 
-    console.log(req.body)
+    const {title, text} = req.body;
+    
+    if (title && text){
+        const newNote = {
+            title,
+            text,
+        };
 
-    res.json(db)
+        readAndAppend(newNote, '/notes');
+
+        const response = {
+          status: 'success',
+          body: newNote,
+        };
+    
+        res.json(response);
+      } else {
+        res.json('Error in posting feedback');
+      }
+    
 }
 )
 
