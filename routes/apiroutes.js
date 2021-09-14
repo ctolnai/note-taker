@@ -2,7 +2,7 @@ const router = require('express').Router();
 const { ifError } = require('assert');
 const fs = require('fs');
 const db = require('../db/db.json');
-const { readFromFile, readAndAppend } = require('../helpers/fsUtils');
+const {readAndAppend } = require('../helpers/fsUtils');
 
 router.get('/notes', (req, res) => {
     res.json(db)
@@ -20,7 +20,7 @@ router.post('/notes', (req, res) => {
             text,
         };
 
-        readAndAppend(newNote, '/notes');
+        readAndAppend(newNote, 'db/db.json');
 
         const response = {
           status: 'success',
@@ -33,6 +33,6 @@ router.post('/notes', (req, res) => {
       }
     
 }
-)
+);
 
 module.exports = router
