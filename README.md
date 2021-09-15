@@ -10,7 +10,7 @@
   - [Contribution](#contribution)
   - [Tests](#tests)
   ## Installation
-  The application is deployed live at https://warm-wildwood-39670.herokuapp.com/
+  The application is deployed live at https://note-taker-ct-2021.herokuapp.com/
   
   The github repository is at https://github.com/ctolnai/note-taker
   ## Usage
